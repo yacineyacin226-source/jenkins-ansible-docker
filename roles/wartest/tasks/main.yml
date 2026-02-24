@@ -1,6 +1,6 @@
-- name: install docker sdk for python
+- name: install python3
   apt:
-    name: python3-docker
+    name: python3-pip
     state: present
 
 - name: pip install docker-py
