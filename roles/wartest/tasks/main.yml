@@ -1,18 +1,16 @@
-- name: install python3
+- name: Install python3 and docker SDK
   apt:
-    name: python3-pip
-    state: present
-
-- name: pip install docker-py
-  pip:
     name:
-      - docker
-      - docker-compose
+      - python3-pip
+      - python3-docker
+    state: present
+    update_cache: yes
 
-- name: run container
+- name: Run wartest container
   docker_container:
     name: wartest
-    image: "{{ image }}"
-    ports: 8081:8080
+    image: "{{ image }}"
+    ports:
+      - "8081:8080"
     state: started
- 
+    restart_policy: always
